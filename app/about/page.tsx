@@ -49,7 +49,7 @@ export default function About() {
 
         <div className="about-subject-reveal absolute inset-x-0 bottom-0 z-10 mx-auto h-[86svh] w-[145vw] max-w-none sm:h-[86svh] sm:w-[min(82vw,54rem)] lg:h-[88svh] lg:w-[min(62vw,58rem)]">
           <Image
-            src="/about-portrait-cutout-bw-v2.png"
+            src="/lucifer-portfolio/about-portrait-cutout-bw-v2.png"
             alt="Lucifer seated on a stool"
             fill
             preload
