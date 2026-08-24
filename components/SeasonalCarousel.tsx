@@ -97,32 +97,53 @@ export default function SeasonalCarousel() {
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={() => setIsPaused(false)}
     >
-      <div className="mb-5 flex items-center justify-between border-b border-white/15 pb-4">
-        <p
-          className="text-[9px] uppercase tracking-[0.2em] text-white/38"
-          aria-live="polite"
-        >
-          {String(firstVisible).padStart(2, "0")}—
-          {String(lastVisible).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-        </p>
-        <div className="flex gap-2">
+      <div className="mb-6 grid gap-4 border-y border-white/15 py-3 sm:grid-cols-[1fr_auto] sm:items-center">
+        <div className="flex items-center gap-5">
+          <p
+            className="shrink-0 text-[9px] uppercase tracking-[0.22em] text-white/42"
+            aria-live="polite"
+          >
+            Viewing <span className="ml-2 text-white/78">{String(firstVisible).padStart(2, "0")}—{String(lastVisible).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+          </p>
+          <div className="hidden w-full max-w-56 items-center gap-1.5 sm:flex">
+            {Array.from({ length: maxIndex + 1 }, (_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Show seasonal set ${index + 1}`}
+                aria-current={safeIndex === index ? "true" : undefined}
+                className={`h-px flex-1 transition-all duration-500 ${
+                  safeIndex === index
+                    ? "bg-white/85"
+                    : "bg-white/18 hover:bg-white/45"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-px border border-white/20 bg-white/20">
           <button
             type="button"
             onClick={goToPrevious}
             aria-label="Previous seasonal designs"
-            className="flex size-10 items-center justify-center border border-white/20 text-sm text-white/65 transition-colors hover:border-white/55 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+            className="group/nav relative flex h-11 min-w-[7.25rem] items-center justify-between gap-4 overflow-hidden bg-[#080808] px-4 text-[9px] uppercase tracking-[0.2em] text-white/60 transition-colors disabled:cursor-not-allowed disabled:opacity-30"
             disabled={maxIndex === 0}
           >
-            ←
+            <span className="absolute inset-0 translate-y-full bg-[#f5f5f2] transition-transform duration-300 ease-out group-hover/nav:translate-y-0" />
+            <span className="relative z-10 transition-transform duration-300 group-hover/nav:-translate-x-1 group-hover/nav:text-[#080808]">←</span>
+            <span className="relative z-10 transition-colors duration-300 group-hover/nav:text-[#080808]">Previous</span>
           </button>
           <button
             type="button"
             onClick={goToNext}
             aria-label="Next seasonal designs"
-            className="flex size-10 items-center justify-center border border-white/20 text-sm text-white/65 transition-colors hover:border-white/55 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+            className="group/nav relative flex h-11 min-w-[7.25rem] items-center justify-between gap-4 overflow-hidden bg-[#080808] px-4 text-[9px] uppercase tracking-[0.2em] text-white/60 transition-colors disabled:cursor-not-allowed disabled:opacity-30"
             disabled={maxIndex === 0}
           >
-            →
+            <span className="absolute inset-0 translate-y-full bg-[#f5f5f2] transition-transform duration-300 ease-out group-hover/nav:translate-y-0" />
+            <span className="relative z-10 transition-colors duration-300 group-hover/nav:text-[#080808]">Next</span>
+            <span className="relative z-10 transition-transform duration-300 group-hover/nav:translate-x-1 group-hover/nav:text-[#080808]">→</span>
           </button>
         </div>
       </div>
@@ -141,13 +162,13 @@ export default function SeasonalCarousel() {
                 index < safeIndex || index >= safeIndex + visibleCount
               }
             >
-              <div className="group relative aspect-[2/3] overflow-hidden bg-[#f3f1ec]">
+              <div className="group relative aspect-[2/3] overflow-hidden bg-white/[0.04] ring-1 ring-inset ring-white/10">
                 <Image
                   src={`${assetRoot}/${slide.src}`}
                   alt={slide.alt}
                   fill
                   sizes="(max-width: 767px) 100vw, 33vw"
-                  className="object-contain transition-transform duration-700 ease-out group-hover:scale-[1.012]"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.012]"
                 />
               </div>
               <div className="mt-3 flex items-center justify-between border-t border-white/12 pt-3 text-[9px] uppercase tracking-[0.18em] text-white/38">

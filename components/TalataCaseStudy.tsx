@@ -479,7 +479,7 @@ export default function MorningstarCaseStudy({
                 playsInline
                 preload="metadata"
                 poster={`${assetRoot}/next-motion-poster.jpg`}
-                className="aspect-[9/16] w-full bg-[#d9f2ef] object-contain"
+                className="aspect-[9/16] w-full object-cover"
                 aria-label="Talata after-work dining motion graphic"
               >
                 <source src={`${assetRoot}/next-motion.mp4`} type="video/mp4" />
