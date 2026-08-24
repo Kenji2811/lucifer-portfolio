@@ -148,7 +148,7 @@ export default function MorningstarCaseStudy({
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
-          <h1 className="headline-reveal-delayed break-words text-[15vw] font-bold uppercase leading-[0.76] tracking-[-0.09em] lg:col-span-9 lg:text-[11vw]">
+          <h1 className="headline-reveal-delayed whitespace-nowrap text-[clamp(2.65rem,13vw,7.5rem)] font-bold uppercase leading-[0.76] tracking-[-0.09em] lg:col-span-9 lg:text-[10.2vw]">
             {project.title}
           </h1>
           <p className="reveal-up-delayed max-w-xs text-sm leading-relaxed text-white/46 lg:col-span-3 lg:pb-2">
