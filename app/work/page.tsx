@@ -51,11 +51,11 @@ export default function WorkPage() {
           </span>
         </div>
         <Link
-          href="/work/morningstar"
+          href="/work/talata"
           className="group mt-8 flex items-end justify-between gap-8"
         >
           <span className="text-[12vw] font-medium leading-none tracking-[-0.07em] sm:text-[9vw]">
-            Morningstar
+            Talata
           </span>
           <span className="mb-2 text-3xl transition-transform duration-300 group-hover:translate-x-2 sm:text-5xl">
             →

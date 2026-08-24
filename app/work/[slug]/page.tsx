@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import TalataCaseStudy from "@/components/TalataCaseStudy";
 import { getNextProject, getProject, projects } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -49,6 +50,17 @@ export default async function ProjectDetailPage({
 
   const nextProject = getNextProject(slug);
   const currentPosition = projects.findIndex((item) => item.slug === slug) + 1;
+
+  if (project.slug === "talata") {
+    return (
+      <TalataCaseStudy
+        project={project}
+        nextProject={nextProject}
+        currentPosition={currentPosition}
+        projectCount={projects.length}
+      />
+    );
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#080808] text-[#f5f5f2]">
