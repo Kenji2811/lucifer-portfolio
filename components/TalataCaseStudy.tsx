@@ -75,35 +75,49 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 type CollectionGridProps = {
   mainSrc: string;
   mainAlt: string;
-  compositeSrc: string;
-  compositeAlt: string;
+  detailImages: readonly {
+    src: string;
+    alt: string;
+  }[];
 };
 
 function CollectionGrid({
   mainSrc,
   mainAlt,
-  compositeSrc,
-  compositeAlt,
+  detailImages,
 }: CollectionGridProps) {
   return (
-    <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:items-start">
-      <RevealOnScroll className="lg:col-span-5">
-        <ProjectImage
-          src={mainSrc}
-          alt={mainAlt}
-          className="aspect-[2/3]"
-          sizes="(max-width: 1024px) 100vw, 42vw"
-        />
-      </RevealOnScroll>
-      <RevealOnScroll className="lg:col-span-7" delay={90}>
-        <ProjectImage
-          src={compositeSrc}
-          alt={compositeAlt}
-          className="aspect-square"
-          sizes="(max-width: 1024px) 100vw, 58vw"
-        />
-      </RevealOnScroll>
-    </div>
+    <RevealOnScroll className="mt-12">
+      <div className="grid aspect-square grid-cols-3 grid-rows-3 gap-2 sm:gap-4 lg:gap-5">
+        <div className="group relative col-span-2 row-span-3 overflow-hidden bg-white/[0.04]">
+          <Image
+            src={`${assetRoot}/${mainSrc}`}
+            alt={mainAlt}
+            fill
+            sizes="(max-width: 1024px) 66vw, 62vw"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+          />
+        </div>
+
+        {detailImages.map((image, index) => (
+          <div
+            key={image.src}
+            className="group relative col-span-1 row-span-1 overflow-hidden bg-white/[0.04]"
+          >
+            <Image
+              src={`${assetRoot}/${image.src}`}
+              alt={image.alt}
+              fill
+              sizes="(max-width: 1024px) 33vw, 31vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+            />
+            <span className="pointer-events-none absolute right-3 top-3 text-[8px] uppercase tracking-[0.18em] text-white/55 mix-blend-difference sm:right-4 sm:top-4 sm:text-[9px]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+        ))}
+      </div>
+    </RevealOnScroll>
   );
 }
 
@@ -288,8 +302,8 @@ export default function MorningstarCaseStudy({
             </div>
             <p className="max-w-xl text-sm leading-relaxed text-white/45 lg:col-span-5 lg:col-start-8">
               Food becomes the headline. The portrait key visual introduces the
-              campaign, followed by a composite grid that gathers the finished
-              dishes into one clear visual system.
+              campaign, followed by three supporting visuals that gather the
+              finished dishes into one clear system.
             </p>
           </div>
         </RevealOnScroll>
@@ -297,8 +311,20 @@ export default function MorningstarCaseStudy({
         <CollectionGrid
           mainSrc="dinner-main.webp"
           mainAlt="Talata Ấn Tượng Tiệc Sang main campaign poster"
-          compositeSrc="dinner-composite-v2.webp"
-          compositeAlt="Talata Ấn Tượng Tiệc Sang composite campaign grid"
+          detailImages={[
+            {
+              src: "dinner-detail-a.webp",
+              alt: "Talata noodle-wrapped seafood dish",
+            },
+            {
+              src: "dinner-detail-b.webp",
+              alt: "Talata plated seafood tartlets",
+            },
+            {
+              src: "dinner-detail-c.webp",
+              alt: "Talata raw crab salad dish",
+            },
+          ]}
         />
       </section>
 
@@ -322,8 +348,20 @@ export default function MorningstarCaseStudy({
         <CollectionGrid
           mainSrc="abalone-main.webp"
           mainAlt="Talata Sang Từ Tâm Ý abalone main poster"
-          compositeSrc="abalone-composite.webp"
-          compositeAlt="Talata abalone finished dish and ingredient composite grid"
+          detailImages={[
+            {
+              src: "abalone-c.webp",
+              alt: "Fresh abalone ingredient visual",
+            },
+            {
+              src: "abalone-b.webp",
+              alt: "Talata finished abalone soup dish",
+            },
+            {
+              src: "abalone-a.webp",
+              alt: "Cordyceps ingredient visual",
+            },
+          ]}
         />
       </section>
 
