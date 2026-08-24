@@ -297,7 +297,7 @@ export default function MorningstarCaseStudy({
         <CollectionGrid
           mainSrc="dinner-main.webp"
           mainAlt="Talata Ấn Tượng Tiệc Sang main campaign poster"
-          compositeSrc="dinner-composite.webp"
+          compositeSrc="dinner-composite-v2.webp"
           compositeAlt="Talata Ấn Tượng Tiệc Sang composite campaign grid"
         />
       </section>
