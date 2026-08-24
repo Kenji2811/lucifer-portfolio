@@ -72,7 +72,42 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function TalataCaseStudy({
+type CollectionGridProps = {
+  mainSrc: string;
+  mainAlt: string;
+  compositeSrc: string;
+  compositeAlt: string;
+};
+
+function CollectionGrid({
+  mainSrc,
+  mainAlt,
+  compositeSrc,
+  compositeAlt,
+}: CollectionGridProps) {
+  return (
+    <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:items-start">
+      <RevealOnScroll className="lg:col-span-5">
+        <ProjectImage
+          src={mainSrc}
+          alt={mainAlt}
+          className="aspect-[2/3]"
+          sizes="(max-width: 1024px) 100vw, 42vw"
+        />
+      </RevealOnScroll>
+      <RevealOnScroll className="lg:col-span-7" delay={90}>
+        <ProjectImage
+          src={compositeSrc}
+          alt={compositeAlt}
+          className="aspect-square"
+          sizes="(max-width: 1024px) 100vw, 58vw"
+        />
+      </RevealOnScroll>
+    </div>
+  );
+}
+
+export default function MorningstarCaseStudy({
   project,
   nextProject,
   currentPosition,
@@ -94,20 +129,38 @@ export default function TalataCaseStudy({
             {String(currentPosition).padStart(2, "0")} / {String(projectCount).padStart(2, "0")}
           </p>
           <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">
-            Brand communication / {project.year}
+            Brand archive / {project.year}
           </p>
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
-          <h1 className="headline-reveal-delayed break-words text-[17vw] font-bold uppercase leading-[0.76] tracking-[-0.09em] lg:col-span-9 lg:text-[13vw]">
-            Talata
+          <h1 className="headline-reveal-delayed break-words text-[15vw] font-bold uppercase leading-[0.76] tracking-[-0.09em] lg:col-span-9 lg:text-[11vw]">
+            {project.title}
           </h1>
           <p className="reveal-up-delayed max-w-xs text-sm leading-relaxed text-white/46 lg:col-span-3 lg:pb-2">
-            Restaurant communication shaped through coastal colour, food-led
-            storytelling and motion.
+            A growing archive of identity, brand communication, campaigns and
+            motion.
           </p>
         </div>
       </section>
+
+      <RevealOnScroll>
+        <section className="grid gap-10 border-t border-white/15 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-12 lg:px-12">
+          <SectionLabel>Brand group / 01</SectionLabel>
+          <div className="lg:col-span-8 lg:col-start-5">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-white/38">
+              Talata Seafood / Brand communication
+            </p>
+            <h2 className="mt-5 text-[18vw] font-semibold uppercase leading-[0.78] tracking-[-0.08em] sm:text-[13vw] lg:text-[10vw]">
+              Talata
+            </h2>
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-white/48 sm:text-lg">
+              A focused group within Morningstar, shaped through coastal colour,
+              food-led storytelling and motion.
+            </p>
+          </div>
+        </section>
+      </RevealOnScroll>
 
       <section className="px-5 pb-24 sm:px-8 lg:px-12">
         <div className="project-hero-panel relative overflow-hidden bg-[#0a6d72]">
@@ -132,13 +185,18 @@ export default function TalataCaseStudy({
 
       <RevealOnScroll>
         <section className="grid gap-12 border-t border-white/15 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-12 lg:px-12">
-          <SectionLabel>Overview / 01</SectionLabel>
+          <SectionLabel>Talata overview / 02</SectionLabel>
           <div className="lg:col-span-7 lg:col-start-5">
             <p className="text-3xl leading-[1.12] tracking-[-0.05em] sm:text-4xl lg:text-5xl">
-              {project.introduction}
+              A coastal communication system translating the atmosphere of Hạ
+              Long into campaign visuals, food imagery and motion.
             </p>
             <p className="mt-10 max-w-2xl text-base leading-relaxed text-white/55 sm:text-lg">
-              {project.overview}
+              Talata is an ongoing body of communication work for a seafood
+              restaurant. The visual language moves between coastal
+              storytelling, product-led campaigns, seasonal moments and
+              short-form motion while keeping the brand recognisable across
+              social channels.
             </p>
           </div>
         </section>
@@ -148,19 +206,22 @@ export default function TalataCaseStudy({
         <section className="grid gap-10 border-t border-white/15 px-5 py-16 sm:grid-cols-3 sm:px-8 lg:px-12">
           <div>
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Role</p>
-            <p className="mt-3 text-sm leading-relaxed text-white/75">{project.role}</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/75">
+              Art direction / Graphic design / Motion
+            </p>
           </div>
           <div>
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Scope</p>
             <ul className="mt-3 space-y-1 text-sm text-white/75">
-              {project.scope.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+              <li>Campaign system</li>
+              <li>Food visual</li>
+              <li>Social content</li>
+              <li>Motion</li>
             </ul>
           </div>
           <div>
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Duration</p>
-            <p className="mt-3 text-sm text-white/75">{project.duration} / 2025—2026</p>
+            <p className="mt-3 text-sm text-white/75">Ongoing / 2025—2026</p>
           </div>
         </section>
       </RevealOnScroll>
@@ -169,7 +230,7 @@ export default function TalataCaseStudy({
         <RevealOnScroll>
           <div className="flex items-end justify-between gap-8">
             <div>
-              <SectionLabel>Foundation / 02</SectionLabel>
+              <SectionLabel>Foundation / 03</SectionLabel>
               <h2 className="mt-5 text-4xl tracking-[-0.06em] sm:text-6xl">
                 Build the system.
               </h2>
@@ -182,9 +243,9 @@ export default function TalataCaseStudy({
         </RevealOnScroll>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          <RevealOnScroll><AssetPlaceholder index="02.1" title="Logo system" /></RevealOnScroll>
-          <RevealOnScroll delay={80}><AssetPlaceholder index="02.2" title="Type & colour" /></RevealOnScroll>
-          <RevealOnScroll delay={160}><AssetPlaceholder index="02.3" title="Brand guideline" /></RevealOnScroll>
+          <RevealOnScroll><AssetPlaceholder index="03.1" title="Logo system" /></RevealOnScroll>
+          <RevealOnScroll delay={80}><AssetPlaceholder index="03.2" title="Type & colour" /></RevealOnScroll>
+          <RevealOnScroll delay={160}><AssetPlaceholder index="03.3" title="Brand guideline" /></RevealOnScroll>
         </div>
       </section>
 
@@ -200,7 +261,7 @@ export default function TalataCaseStudy({
               />
             </div>
             <div className="flex flex-col justify-between border border-white/15 p-6 sm:p-8 lg:col-span-7">
-              <SectionLabel>Key visual / 03</SectionLabel>
+              <SectionLabel>Key visual / 04</SectionLabel>
               <p className="my-16 max-w-[12ch] text-4xl leading-[0.98] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
                 Hạ Long, told as a visual destination.
               </p>
@@ -220,55 +281,56 @@ export default function TalataCaseStudy({
         <RevealOnScroll>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-4">
-              <SectionLabel>Campaign system / 04</SectionLabel>
+              <SectionLabel>Campaign system / 05</SectionLabel>
               <h2 className="mt-5 text-4xl tracking-[-0.06em] sm:text-6xl">
-                Food becomes the headline.
+                Ấn Tượng Tiệc Sang.
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-relaxed text-white/45 lg:col-span-5 lg:col-start-8">
-              A flexible content family pairs direct food photography with a
-              consistent marine palette. Portrait key visuals lead; square
-              details expand the story across social formats.
+              Food becomes the headline. The portrait key visual introduces the
+              campaign, followed by a composite grid that gathers the finished
+              dishes into one clear visual system.
             </p>
           </div>
         </RevealOnScroll>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-12">
-          <RevealOnScroll className="lg:col-span-5">
-            <ProjectImage
-              src="dinner-main.webp"
-              alt="Talata dinner campaign main poster"
-              className="aspect-[2/3]"
-              sizes="(max-width: 1024px) 100vw, 42vw"
-            />
-          </RevealOnScroll>
-          <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
-            <RevealOnScroll delay={60}><ProjectImage src="dinner-detail-a.webp" alt="Talata dinner campaign food detail" /></RevealOnScroll>
-            <RevealOnScroll delay={120}><ProjectImage src="dinner-detail-b.webp" alt="Talata dinner campaign plated dish" /></RevealOnScroll>
-            <RevealOnScroll delay={180}><ProjectImage src="dinner-detail-c.webp" alt="Talata dinner campaign menu visual" /></RevealOnScroll>
-            <RevealOnScroll delay={240}><AssetPlaceholder index="04.4" title="Grid extension" /></RevealOnScroll>
-          </div>
-        </div>
+        <CollectionGrid
+          mainSrc="dinner-main.webp"
+          mainAlt="Talata Ấn Tượng Tiệc Sang main campaign poster"
+          compositeSrc="dinner-composite.webp"
+          compositeAlt="Talata Ấn Tượng Tiệc Sang composite campaign grid"
+        />
       </section>
 
-      <section className="px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
+      <section className="border-t border-white/15 px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
         <RevealOnScroll>
-          <div className="flex items-end justify-between border-t border-white/15 pt-5">
-            <SectionLabel>Product storytelling / 05</SectionLabel>
-            <p className="text-[9px] uppercase tracking-[0.2em] text-white/30">Triptych / Abalone</p>
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-4">
+              <SectionLabel>Product storytelling / 06</SectionLabel>
+              <h2 className="mt-5 text-4xl tracking-[-0.06em] sm:text-6xl">
+                Sang Từ Tâm Ý.
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-relaxed text-white/45 lg:col-span-5 lg:col-start-8">
+              The same grid logic moves from the main campaign artwork to the
+              finished abalone dish and its ingredient story, keeping the
+              product sequence easy to read.
+            </p>
           </div>
         </RevealOnScroll>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          <RevealOnScroll><ProjectImage src="abalone-a.webp" alt="Talata abalone product visual one" /></RevealOnScroll>
-          <RevealOnScroll delay={80}><ProjectImage src="abalone-b.webp" alt="Talata abalone product visual two" /></RevealOnScroll>
-          <RevealOnScroll delay={160}><ProjectImage src="abalone-c.webp" alt="Talata abalone product visual three" /></RevealOnScroll>
-        </div>
+
+        <CollectionGrid
+          mainSrc="abalone-main.webp"
+          mainAlt="Talata Sang Từ Tâm Ý abalone main poster"
+          compositeSrc="abalone-composite.webp"
+          compositeAlt="Talata abalone finished dish and ingredient composite grid"
+        />
       </section>
 
       <section className="border-t border-white/15 px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12">
           <RevealOnScroll className="lg:col-span-4">
-            <SectionLabel>Motion / 06</SectionLabel>
+            <SectionLabel>Motion / 07</SectionLabel>
             <h2 className="mt-5 max-w-[9ch] text-4xl tracking-[-0.06em] sm:text-6xl">
               A moving menu, not a static post.
             </h2>
@@ -315,7 +377,7 @@ export default function TalataCaseStudy({
       <section className="px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
         <RevealOnScroll>
           <div className="flex items-end justify-between border-t border-white/15 pt-5">
-            <SectionLabel>Seasonal communication / 07</SectionLabel>
+            <SectionLabel>Seasonal communication / 08</SectionLabel>
             <p className="hidden max-w-sm text-right text-xs leading-relaxed text-white/35 sm:block">
               One brand voice adapting to moments across the calendar.
             </p>

@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import TalataCaseStudy from "@/components/TalataCaseStudy";
+import MorningstarCaseStudy from "@/components/TalataCaseStudy";
 import { getNextProject, getProject, projects } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -51,9 +51,9 @@ export default async function ProjectDetailPage({
   const nextProject = getNextProject(slug);
   const currentPosition = projects.findIndex((item) => item.slug === slug) + 1;
 
-  if (project.slug === "talata") {
+  if (project.slug === "morningstar") {
     return (
-      <TalataCaseStudy
+      <MorningstarCaseStudy
         project={project}
         nextProject={nextProject}
         currentPosition={currentPosition}
