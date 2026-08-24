@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import RevealOnScroll from "@/components/RevealOnScroll";
+import SeasonalCarousel from "@/components/SeasonalCarousel";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import type { Project } from "@/lib/projects";
@@ -34,6 +35,7 @@ type ProjectImageProps = {
   src: string;
   alt: string;
   className?: string;
+  imageClassName?: string;
   sizes?: string;
 };
 
@@ -41,6 +43,7 @@ function ProjectImage({
   src,
   alt,
   className = "aspect-square",
+  imageClassName = "object-cover",
   sizes = "(max-width: 1024px) 100vw, 50vw",
 }: ProjectImageProps) {
   return (
@@ -50,7 +53,7 @@ function ProjectImage({
         alt={alt}
         fill
         sizes={sizes}
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+        className={`${imageClassName} transition-transform duration-700 ease-out group-hover:scale-[1.015]`}
       />
     </div>
   );
@@ -285,8 +288,9 @@ export default function MorningstarCaseStudy({
             <div className="lg:col-span-5">
               <ProjectImage
                 src="coastal-campaign.webp"
-                alt="Talata illustrated Hạ Long coastal campaign artwork"
+                alt="Talata 9th anniversary campaign poster for the Hai Phong restaurant"
                 className="aspect-[3/4]"
+                imageClassName="object-contain"
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
             </div>
@@ -446,8 +450,8 @@ export default function MorningstarCaseStudy({
             </h2>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-white/45">
               Short-form motion turns menu information into a paced sequence
-              made for vertical screens. The second slot is reserved for your
-              next animation.
+              made for vertical screens, moving from event storytelling to an
+              after-work dining moment.
             </p>
           </RevealOnScroll>
           <RevealOnScroll className="lg:col-span-4 lg:col-start-6" delay={80}>
@@ -467,18 +471,19 @@ export default function MorningstarCaseStudy({
             </div>
           </RevealOnScroll>
           <RevealOnScroll className="lg:col-span-3" delay={160}>
-            <div className="flex h-full min-h-[22rem] flex-col justify-between border border-dashed border-white/20 bg-white/[0.025] p-6 sm:min-h-[25rem]">
-              <div className="flex justify-between text-[9px] uppercase tracking-[0.2em] text-white/35">
-                <span>08.2</span><span>9:16</span>
-              </div>
-              <div className="relative mx-auto size-16 rounded-full border border-white/15">
-                <span className="absolute left-1/2 top-0 h-full w-px bg-white/15" />
-                <span className="absolute left-0 top-1/2 h-px w-full bg-white/15" />
-              </div>
-              <div>
-                <p className="text-2xl tracking-[-0.04em] text-white/75">Next motion</p>
-                <p className="mt-2 text-[9px] uppercase tracking-[0.18em] text-white/30">Add video later</p>
-              </div>
+            <div className="relative mx-auto max-w-md overflow-hidden bg-[#d9f2ef] p-3 sm:p-4">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={`${assetRoot}/next-motion-poster.jpg`}
+                className="aspect-[9/16] w-full bg-[#d9f2ef] object-contain"
+                aria-label="Talata after-work dining motion graphic"
+              >
+                <source src={`${assetRoot}/next-motion.mp4`} type="video/mp4" />
+              </video>
             </div>
           </RevealOnScroll>
         </div>
@@ -493,11 +498,9 @@ export default function MorningstarCaseStudy({
             </p>
           </div>
         </RevealOnScroll>
-        <div className="mx-auto mt-8 grid max-w-6xl gap-5 md:grid-cols-3">
-          <RevealOnScroll><ProjectImage src="mid-autumn.webp" alt="Talata Mid-Autumn seasonal poster" className="aspect-[2/3]" /></RevealOnScroll>
-          <RevealOnScroll delay={80}><ProjectImage src="new-year.webp" alt="Talata New Year seasonal poster" className="aspect-[2/3]" /></RevealOnScroll>
-          <RevealOnScroll delay={160}><ProjectImage src="travel-season.webp" alt="Talata Hạ Long travel season poster" className="aspect-[2/3]" /></RevealOnScroll>
-        </div>
+        <RevealOnScroll delay={80}>
+          <SeasonalCarousel />
+        </RevealOnScroll>
       </section>
 
       <section className="border-t border-white/15 px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
