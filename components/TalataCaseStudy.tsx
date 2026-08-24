@@ -7,6 +7,21 @@ import SiteHeader from "@/components/SiteHeader";
 import type { Project } from "@/lib/projects";
 
 const assetRoot = "/lucifer-portfolio/projects/talata";
+const menuPdf = `${assetRoot}/menu-talata-hai-phong.pdf`;
+
+const menuPages = [
+  { page: "01", title: "Món khai vị" },
+  { page: "02", title: "Signature dish" },
+  { page: "03", title: "Món ăn nhẹ" },
+  { page: "04", title: "Hải sản có vỏ" },
+  { page: "07", title: "Tôm — Bề bề" },
+  { page: "08", title: "Các món cá" },
+  { page: "10", title: "Sashimi" },
+  { page: "11", title: "Cua — Ghẹ" },
+  { page: "12", title: "Lẩu" },
+  { page: "13", title: "Các món thịt" },
+  { page: "15", title: "Đồ uống — Tráng miệng" },
+] as const;
 
 type TalataCaseStudyProps = {
   project: Project;
@@ -228,6 +243,7 @@ export default function MorningstarCaseStudy({
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Scope</p>
             <ul className="mt-3 space-y-1 text-sm text-white/75">
               <li>Campaign system</li>
+              <li>Menu design</li>
               <li>Food visual</li>
               <li>Social content</li>
               <li>Motion</li>
@@ -294,8 +310,64 @@ export default function MorningstarCaseStudy({
       <section className="border-t border-white/15 px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
         <RevealOnScroll>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-5">
+              <SectionLabel>Menu design / 05</SectionLabel>
+              <h2 className="mt-5 max-w-[13ch] text-3xl tracking-[-0.055em] sm:text-5xl">
+                Food first, prices in context.
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8">
+              <p className="max-w-xl text-sm leading-relaxed text-white/45">
+                Eleven selected spreads pair food photography with menu
+                information. Price-only pages are excluded, keeping the
+                portfolio edit visual and concise.
+              </p>
+              <Link
+                href={menuPdf}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex items-center gap-3 border-b border-white/30 pb-2 text-[10px] uppercase tracking-[0.2em] text-white/65 transition-colors hover:border-white hover:text-white"
+              >
+                View selected menu <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+        </RevealOnScroll>
+
+        <div className="mt-10 overflow-x-auto pb-5 [scrollbar-color:rgba(255,255,255,0.28)_transparent] [scrollbar-width:thin]">
+          <div className="flex w-max snap-x snap-mandatory gap-4 sm:gap-5">
+            {menuPages.map((item, index) => (
+              <Link
+                key={item.page}
+                href={`${menuPdf}#page=${index + 1}`}
+                target="_blank"
+                rel="noreferrer"
+                className="group block w-[82vw] max-w-[760px] shrink-0 snap-start"
+              >
+                <div className="relative aspect-[1190/842] overflow-hidden bg-white/[0.04]">
+                  <Image
+                    src={`${assetRoot}/menu/page-${item.page}.webp`}
+                    alt={`Talata Hải Phòng menu — ${item.title}`}
+                    fill
+                    sizes="(max-width: 900px) 82vw, 760px"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.012]"
+                  />
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-white/15 pt-3 text-[9px] uppercase tracking-[0.18em] text-white/40">
+                  <span>{String(index + 1).padStart(2, "0")} / {menuPages.length}</span>
+                  <span>{item.title}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/15 px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+        <RevealOnScroll>
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-4">
-              <SectionLabel>Campaign system / 05</SectionLabel>
+              <SectionLabel>Campaign system / 06</SectionLabel>
               <h2 className="mt-5 text-3xl tracking-[-0.055em] sm:text-5xl">
                 Ấn Tượng Tiệc Sang.
               </h2>
@@ -332,7 +404,7 @@ export default function MorningstarCaseStudy({
         <RevealOnScroll>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-4">
-              <SectionLabel>Product storytelling / 06</SectionLabel>
+              <SectionLabel>Product storytelling / 07</SectionLabel>
               <h2 className="mt-5 text-3xl tracking-[-0.055em] sm:text-5xl">
                 Sang Từ Tâm Ý.
               </h2>
@@ -368,7 +440,7 @@ export default function MorningstarCaseStudy({
       <section className="border-t border-white/15 px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12">
           <RevealOnScroll className="lg:col-span-4">
-            <SectionLabel>Motion / 07</SectionLabel>
+            <SectionLabel>Motion / 08</SectionLabel>
             <h2 className="mt-5 max-w-[11ch] text-3xl tracking-[-0.055em] sm:text-5xl">
               A moving menu, not a static post.
             </h2>
@@ -397,7 +469,7 @@ export default function MorningstarCaseStudy({
           <RevealOnScroll className="lg:col-span-3" delay={160}>
             <div className="flex h-full min-h-[22rem] flex-col justify-between border border-dashed border-white/20 bg-white/[0.025] p-6 sm:min-h-[25rem]">
               <div className="flex justify-between text-[9px] uppercase tracking-[0.2em] text-white/35">
-                <span>06.2</span><span>9:16</span>
+                <span>08.2</span><span>9:16</span>
               </div>
               <div className="relative mx-auto size-16 rounded-full border border-white/15">
                 <span className="absolute left-1/2 top-0 h-full w-px bg-white/15" />
@@ -415,7 +487,7 @@ export default function MorningstarCaseStudy({
       <section className="px-5 pb-20 sm:px-8 sm:pb-24 lg:px-12">
         <RevealOnScroll>
           <div className="flex items-end justify-between border-t border-white/15 pt-5">
-            <SectionLabel>Seasonal communication / 08</SectionLabel>
+            <SectionLabel>Seasonal communication / 09</SectionLabel>
             <p className="hidden max-w-sm text-right text-xs leading-relaxed text-white/35 sm:block">
               One brand voice adapting to moments across the calendar.
             </p>
