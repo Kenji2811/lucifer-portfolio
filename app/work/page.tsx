@@ -22,8 +22,8 @@ export default function WorkPage() {
             Archive / 2022—2026
           </p>
           <p className="hidden max-w-xs text-right text-xs leading-relaxed text-white/45 md:block">
-            Brand identities, campaigns and spatial visuals built through a mix
-            of graphic design, art direction and 3D.
+            Brand communication, campaign art direction and spatial identity
+            developed through graphic design, motion and 3D.
           </p>
         </div>
 
@@ -54,8 +54,13 @@ export default function WorkPage() {
           href="/work/morningstar"
           className="group mt-8 flex items-end justify-between gap-8"
         >
-          <span className="text-[12vw] font-medium leading-none tracking-[-0.07em] sm:text-[9vw]">
-            Morningstar
+          <span className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+            <span className="text-[clamp(3.25rem,8vw,8rem)] font-medium leading-[0.92] tracking-[-0.07em]">
+              Brand Communication
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.22em] text-white/25 sm:text-xs">
+              / Morningstar
+            </span>
           </span>
           <span className="mb-2 text-3xl transition-transform duration-300 group-hover:translate-x-2 sm:text-5xl">
             →

@@ -7,7 +7,7 @@ import { projects, type ProjectCategory } from "@/lib/projects";
 
 type Filter = "All" | ProjectCategory;
 
-const filters: Filter[] = ["All", "Branding", "Campaign", "Interior"];
+const filters: Filter[] = ["All", "Branding", "Campaign", "Spatial"];
 
 export default function WorkGallery() {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
@@ -102,7 +102,7 @@ export default function WorkGallery() {
           >
             <Link
               href={`/work/${project.slug}`}
-              aria-label={`View ${project.title} case study`}
+              aria-label={`View ${project.title}, ${project.codename} case study`}
               className="project-cover relative block aspect-[4/3] overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[0.985]"
               style={{
                 backgroundColor: project.background,
@@ -130,9 +130,12 @@ export default function WorkGallery() {
                 <h3>
                   <Link
                     href={`/work/${project.slug}`}
-                    className="text-3xl font-medium tracking-[-0.05em] transition-opacity hover:opacity-60 sm:text-4xl"
+                    className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-3xl font-medium tracking-[-0.05em] transition-opacity hover:opacity-60 sm:text-4xl"
                   >
-                    {project.title}
+                    <span>{project.title}</span>
+                    <span className="text-[9px] font-normal uppercase tracking-[0.2em] text-white/25 sm:text-[10px]">
+                      / {project.codename}
+                    </span>
                   </Link>
                 </h3>
                 <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/40">

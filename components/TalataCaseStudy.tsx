@@ -161,24 +161,28 @@ export default function MorningstarCaseStudy({
             {String(currentPosition).padStart(2, "0")} / {String(projectCount).padStart(2, "0")}
           </p>
           <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">
-            Brand archive / {project.year}
+            Brand communication / {project.year}
           </p>
         </div>
 
         <div className="mt-9 grid gap-7 lg:grid-cols-12 lg:items-end">
-          <h1 className="headline-reveal-delayed whitespace-nowrap text-[clamp(2.4rem,11.5vw,6.5rem)] font-bold uppercase leading-[0.8] tracking-[-0.085em] lg:col-span-9 lg:text-[clamp(5.5rem,7.4vw,7rem)]">
-            {project.title}
-          </h1>
+          <div className="headline-reveal-delayed flex flex-wrap items-baseline gap-x-4 gap-y-2 lg:col-span-9">
+            <h1 className="text-[clamp(2.8rem,7vw,5.25rem)] font-bold uppercase leading-[0.82] tracking-[-0.08em] sm:whitespace-nowrap">
+              {project.title}
+            </h1>
+            <p className="text-[10px] uppercase tracking-[0.24em] text-white/25 sm:text-xs">
+              / {project.codename}
+            </p>
+          </div>
           <p className="reveal-up-delayed max-w-xs text-sm leading-relaxed text-white/46 lg:col-span-3 lg:pb-2">
-            A growing archive of identity, brand communication, campaigns and
-            motion.
+            {project.introduction}
           </p>
         </div>
       </section>
 
       <RevealOnScroll>
         <section className="mx-auto grid w-full max-w-[1440px] gap-8 border-t border-white/15 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-12 lg:px-12">
-          <SectionLabel>Brand group / 01</SectionLabel>
+          <SectionLabel>Brand communication / 01</SectionLabel>
           <div className="lg:col-span-8 lg:col-start-5">
             <p className="text-[10px] uppercase tracking-[0.24em] text-white/38">
               Talata Seafood / Brand communication
@@ -187,8 +191,9 @@ export default function MorningstarCaseStudy({
               Talata
             </h2>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-white/48 sm:text-lg">
-              A focused group within Morningstar, shaped through coastal colour,
-              food-led storytelling and motion.
+              The first hospitality case group in this archive, connecting
+              campaign art direction, menu design, food-led storytelling,
+              seasonal content and motion.
             </p>
           </div>
         </section>
@@ -220,15 +225,14 @@ export default function MorningstarCaseStudy({
           <SectionLabel>Talata overview / 02</SectionLabel>
           <div className="lg:col-span-7 lg:col-start-5">
             <p className="text-2xl leading-[1.15] tracking-[-0.045em] sm:text-3xl lg:text-4xl">
-              A coastal communication system translating the atmosphere of Hạ
-              Long into campaign visuals, food imagery and motion.
+              A hospitality communication system translating Talata&apos;s seafood
+              positioning into campaigns, menu design, food stories and motion.
             </p>
             <p className="mt-10 max-w-2xl text-base leading-relaxed text-white/55 sm:text-lg">
-              Talata is an ongoing body of communication work for a seafood
-              restaurant. The visual language moves between coastal
-              storytelling, product-led campaigns, seasonal moments and
-              short-form motion while keeping the brand recognisable across
-              social channels.
+              Talata is an ongoing body of communication work across Hải Phòng
+              and Hạ Long. The visual language moves between local brand
+              stories, product-led campaigns, seasonal moments and short-form
+              motion while remaining recognisable across digital touchpoints.
             </p>
           </div>
         </section>
@@ -263,7 +267,7 @@ export default function MorningstarCaseStudy({
         <RevealOnScroll>
           <div className="flex items-end justify-between gap-8">
             <div>
-              <SectionLabel>Foundation / 03</SectionLabel>
+              <SectionLabel>Identity system / 03</SectionLabel>
               <h2 className="mt-5 text-3xl tracking-[-0.055em] sm:text-5xl">
                 Build the system.
               </h2>
@@ -297,13 +301,13 @@ export default function MorningstarCaseStudy({
             <div className="flex flex-col justify-between border border-white/15 p-6 sm:p-8 lg:col-span-7">
               <SectionLabel>Key visual / 04</SectionLabel>
               <p className="my-12 max-w-[13ch] text-3xl leading-[1] tracking-[-0.055em] sm:text-5xl lg:text-6xl">
-                Hạ Long, told as a visual destination.
+                Nine years of local brand storytelling.
               </p>
               <div className="grid gap-5 border-t border-white/15 pt-5 text-xs leading-relaxed text-white/45 sm:grid-cols-2">
-                <p>Illustration / Collage / Social campaign</p>
+                <p>Campaign key visual / Anniversary communication</p>
                 <p>
-                  The coastal setting becomes part of the message, connecting
-                  the restaurant to place before introducing the menu.
+                  Local architecture, address cues and brand history are brought
+                  together in a vertical anniversary visual for Hải Phòng.
                 </p>
               </div>
             </div>
@@ -446,12 +450,12 @@ export default function MorningstarCaseStudy({
           <RevealOnScroll className="lg:col-span-4">
             <SectionLabel>Motion / 08</SectionLabel>
             <h2 className="mt-5 max-w-[11ch] text-3xl tracking-[-0.055em] sm:text-5xl">
-              A moving menu, not a static post.
+              Social stories in motion.
             </h2>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-white/45">
-              Short-form motion turns menu information into a paced sequence
-              made for vertical screens, moving from event storytelling to an
-              after-work dining moment.
+              Short-form animation gives seasonal messages and dining offers a
+              clear rhythm for vertical social formats, from event storytelling
+              to an after-work dining moment.
             </p>
           </RevealOnScroll>
           <RevealOnScroll className="lg:col-span-4 lg:col-start-6" delay={80}>
@@ -513,8 +517,15 @@ export default function MorningstarCaseStudy({
           </Link>
         </div>
         <Link href={nextProject ? `/work/${nextProject.slug}` : "/contact"} className="group mt-8 flex items-end justify-between gap-8">
-          <span className="break-words text-[clamp(3rem,7vw,6.5rem)] font-medium leading-none tracking-[-0.065em]">
-            {nextProject ? nextProject.title : "Start a project"}
+          <span className="flex min-w-0 flex-wrap items-baseline gap-x-5 gap-y-2">
+            <span className="break-words text-[clamp(3rem,7vw,6.5rem)] font-medium leading-[0.94] tracking-[-0.065em]">
+              {nextProject ? nextProject.title : "Start a project"}
+            </span>
+            {nextProject ? (
+              <span className="text-[10px] uppercase tracking-[0.22em] text-white/25 sm:text-xs">
+                / {nextProject.codename}
+              </span>
+            ) : null}
           </span>
           <span className="mb-2 text-3xl transition-transform duration-300 group-hover:translate-x-2 sm:text-5xl">→</span>
         </Link>

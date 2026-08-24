@@ -25,15 +25,15 @@ export async function generateMetadata({
   if (!project) return {};
 
   return {
-    title: project.title,
+    title: `${project.title} — ${project.codename}`,
     description: project.introduction,
     openGraph: {
-      title: `${project.title} — Lucifer`,
+      title: `${project.title} / ${project.codename} — Lucifer`,
       description: project.introduction,
       images: [],
     },
     twitter: {
-      title: `${project.title} — Lucifer`,
+      title: `${project.title} / ${project.codename} — Lucifer`,
       description: project.introduction,
       images: [],
     },
@@ -82,9 +82,14 @@ export default async function ProjectDetailPage({
           </p>
         </div>
 
-        <h1 className="headline-reveal-delayed mt-10 break-words text-[15vw] font-bold uppercase leading-[0.78] tracking-[-0.09em] lg:text-[12vw]">
-          {project.title}
-        </h1>
+        <div className="headline-reveal-delayed mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-3">
+          <h1 className="max-w-[14ch] break-words text-[clamp(3.4rem,9vw,9.5rem)] font-bold uppercase leading-[0.8] tracking-[-0.085em]">
+            {project.title}
+          </h1>
+          <p className="text-[10px] uppercase tracking-[0.24em] text-white/25 sm:text-xs">
+            / {project.codename}
+          </p>
+        </div>
       </section>
 
       <section className="px-5 pb-24 sm:px-8 lg:px-12">
@@ -190,6 +195,7 @@ export default async function ProjectDetailPage({
             </p>
             <div className="absolute right-5 top-5 text-right text-[9px] uppercase leading-relaxed tracking-[0.2em] opacity-55 sm:right-8 sm:top-8">
               <p>{project.title}</p>
+              <p className="opacity-55">/ {project.codename}</p>
               <p>{project.discipline}</p>
             </div>
           </div>
@@ -214,8 +220,15 @@ export default async function ProjectDetailPage({
           href={nextProject ? `/work/${nextProject.slug}` : "/contact"}
           className="group mt-8 flex items-end justify-between gap-8"
         >
-          <span className="break-words text-[12vw] font-medium leading-none tracking-[-0.07em] sm:text-[9vw]">
-            {nextProject ? nextProject.title : "Start a project"}
+          <span className="flex min-w-0 flex-wrap items-baseline gap-x-5 gap-y-2">
+            <span className="break-words text-[clamp(3.1rem,8vw,8rem)] font-medium leading-[0.92] tracking-[-0.07em]">
+              {nextProject ? nextProject.title : "Start a project"}
+            </span>
+            {nextProject ? (
+              <span className="text-[10px] uppercase tracking-[0.22em] text-white/25 sm:text-xs">
+                / {nextProject.codename}
+              </span>
+            ) : null}
           </span>
           <span className="mb-2 text-3xl transition-transform duration-300 group-hover:translate-x-2 sm:text-5xl">
             →

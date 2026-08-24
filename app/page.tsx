@@ -28,6 +28,7 @@ export default function Home() {
               key={project.slug}
               number={project.number}
               title={project.title}
+              codename={project.codename}
               category={project.category}
               year={project.year}
               href={`/work/${project.slug}`}
