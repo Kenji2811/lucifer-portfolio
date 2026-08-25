@@ -458,7 +458,7 @@ export default function MorningstarCaseStudy({
               to an after-work dining moment.
             </p>
           </RevealOnScroll>
-          <RevealOnScroll className="lg:col-span-4 lg:col-start-6" delay={80}>
+          <RevealOnScroll className="lg:col-span-3 lg:col-start-6" delay={80}>
             <div className="relative mx-auto max-w-md overflow-hidden bg-[#d9f2ef] p-3 sm:p-4">
               <video
                 autoPlay
