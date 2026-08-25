@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import RevealOnScroll from "@/components/RevealOnScroll";
+import MotionCaseStudy from "@/components/MotionCaseStudy";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import MorningstarCaseStudy from "@/components/TalataCaseStudy";
@@ -54,6 +55,17 @@ export default async function ProjectDetailPage({
   if (project.slug === "morningstar") {
     return (
       <MorningstarCaseStudy
+        project={project}
+        nextProject={nextProject}
+        currentPosition={currentPosition}
+        projectCount={projects.length}
+      />
+    );
+  }
+
+  if (project.slug === "pandemonium") {
+    return (
+      <MotionCaseStudy
         project={project}
         nextProject={nextProject}
         currentPosition={currentPosition}

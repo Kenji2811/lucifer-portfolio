@@ -7,7 +7,7 @@ import { projects, type ProjectCategory } from "@/lib/projects";
 
 type Filter = "All" | ProjectCategory;
 
-const filters: Filter[] = ["All", "Branding", "Campaign", "Spatial"];
+const filters: Filter[] = ["All", "Branding", "Campaign", "Motion"];
 
 export default function WorkGallery() {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
