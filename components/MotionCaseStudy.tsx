@@ -130,7 +130,7 @@ export default function MotionCaseStudy({
             className="aspect-video"
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/70 to-transparent px-5 pb-5 pt-20 text-[9px] uppercase tracking-[0.2em] text-white/70 sm:px-7 sm:pb-7">
-            <span>Selected motion / Reel 00:11</span>
+            <span>Selected motion / Reel 00:33</span>
             <span className="hidden sm:block">Film / Editorial / Performance</span>
           </div>
         </div>
