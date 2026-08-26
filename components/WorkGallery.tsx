@@ -6,8 +6,22 @@ import Link from "next/link";
 import { projects, type ProjectCategory } from "@/lib/projects";
 
 type Filter = "All" | ProjectCategory;
+type ProjectSlug = (typeof projects)[number]["slug"];
 
 const filters: Filter[] = ["All", "Branding", "Campaign", "Motion"];
+
+const previewVideos: Partial<
+  Record<ProjectSlug, { src: string; poster: string }>
+> = {
+  morningstar: {
+    src: "/lucifer-portfolio/projects/talata/brand-motion.mp4",
+    poster: "/lucifer-portfolio/projects/talata/brand-motion-poster.jpg",
+  },
+  pandemonium: {
+    src: "/lucifer-portfolio/projects/motion/motion-reel.mp4",
+    poster: "/lucifer-portfolio/projects/motion/motion-reel-poster.webp",
+  },
+};
 
 export default function WorkGallery() {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
@@ -84,7 +98,10 @@ export default function WorkGallery() {
         ref={galleryRef}
         className="mt-12 grid grid-cols-1 gap-x-5 gap-y-16 lg:grid-cols-12 lg:gap-y-24"
       >
-        {visibleProjects.map((project, index) => (
+        {visibleProjects.map((project, index) => {
+          const previewVideo = previewVideos[project.slug];
+
+          return (
           <article
             id={project.slug}
             key={`${activeFilter}-${project.slug}`}
@@ -116,9 +133,27 @@ export default function WorkGallery() {
                 Selected work
               </span>
 
-              <span className="project-mark absolute inset-x-0 bottom-[-0.16em] text-center text-[35vw] font-bold leading-none tracking-[-0.12em] opacity-90 transition-transform duration-700 ease-out group-hover:-translate-y-3 group-hover:scale-[1.025] lg:text-[21vw]">
-                {project.mark}
-              </span>
+              {previewVideo ? (
+                <>
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={previewVideo.poster}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                    aria-label={`${project.title} preview`}
+                  >
+                    <source src={previewVideo.src} type="video/mp4" />
+                  </video>
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/35" />
+                </>
+              ) : (
+                <span className="project-mark absolute inset-x-0 bottom-[-0.16em] text-center text-[35vw] font-bold leading-none tracking-[-0.12em] opacity-90 transition-transform duration-700 ease-out group-hover:-translate-y-3 group-hover:scale-[1.025] lg:text-[21vw]">
+                  {project.mark}
+                </span>
+              )}
 
               <span className="absolute bottom-5 left-5 rounded-full border border-current/30 px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] opacity-70">
                 {project.category}
@@ -145,7 +180,8 @@ export default function WorkGallery() {
               <span className="pt-1 text-xs text-white/45">{project.year}</span>
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
