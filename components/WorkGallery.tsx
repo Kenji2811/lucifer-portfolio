@@ -84,7 +84,7 @@ export default function WorkGallery() {
                 aria-pressed={isActive}
                 onClick={() => setActiveFilter(filter)}
                 className={`cursor-pointer text-[10px] uppercase tracking-[0.2em] transition-colors ${
-                  isActive ? "text-white" : "text-white/35 hover:text-white/75"
+                  isActive ? "text-white" : "text-white/35"
                 }`}
               >
                 {filter}
@@ -107,7 +107,7 @@ export default function WorkGallery() {
             key={`${activeFilter}-${project.slug}`}
             data-reveal-card
             style={{ transitionDelay: `${index * 90}ms` }}
-            className={`project-reveal group scroll-mt-24 ${
+            className={`project-reveal scroll-mt-24 ${
               visibleProjects.length === 1
                 ? "lg:col-span-8 lg:col-start-3"
                 : index === 0
@@ -120,7 +120,9 @@ export default function WorkGallery() {
             <Link
               href={`/work/${project.slug}`}
               aria-label={`View ${project.title}, ${project.codename} case study`}
-              className="project-cover relative block aspect-[4/3] overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[0.985]"
+              className={`project-cover relative block overflow-hidden ${
+  previewVideo ? "aspect-video" : "aspect-[4/3]"
+}`}
               style={{
                 backgroundColor: project.background,
                 color: project.foreground,
@@ -165,7 +167,7 @@ export default function WorkGallery() {
                 <h3>
                   <Link
                     href={`/work/${project.slug}`}
-                    className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-3xl font-medium tracking-[-0.05em] transition-opacity hover:opacity-60 sm:text-4xl"
+                    className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-3xl font-medium tracking-[-0.05em] sm:text-4xl"
                   >
                     <span>{project.title}</span>
                     <span className="text-[9px] font-normal uppercase tracking-[0.2em] text-white/25 sm:text-[10px]">
