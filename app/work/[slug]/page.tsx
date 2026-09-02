@@ -1,1 +1,178 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
+import RevealOnScroll from "@/components/RevealOnScroll";
+import InfernoCaseStudy from "@/components/InfernoCaseStudy";
+import MotionCaseStudy from "@/components/MotionCaseStudy";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
+import MorningstarCaseStudy from "@/components/TalataCaseStudy";
+import { getNextProject, getProject, projects } from "@/lib/projects";
+
+type ProjectPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+
+  if (!project) return {};
+
+  return {
+    title: `${project.title} — ${project.codename}`,
+    description: project.introduction,
+    openGraph: {
+      title: `${project.title} / ${project.codename} — Lucifer`,
+      description: project.introduction,
+      images: [],
+    },
+    twitter: {
+      title: `${project.title} / ${project.codename} — Lucifer`,
+      description: project.introduction,
+      images: [],
+    },
+  };
+}
+
+export default async function ProjectDetailPage({
+  params,
+}: ProjectPageProps) {
+  const { slug } = await params;
+  const project = getProject(slug);
+
+  if (!project) notFound();
+
+  const nextProject = getNextProject(slug);
+  const currentPosition = projects.findIndex((item) => item.slug === slug) + 1;
+
+  if (project.slug === "morningstar") {
+    return (
+      <MorningstarCaseStudy
+        project={project}
+        nextProject={nextProject}
+        currentPosition={currentPosition}
+        projectCount={projects.length}
+      />
+    );
+  }
+
+  if (project.slug === "inferno") {
+    return (
+      <InfernoCaseStudy
+        project={project}
+        nextProject={nextProject}
+        currentPosition={currentPosition}
+        projectCount={projects.length}
+      />
+    );
+  }
+
+  if (project.slug === "pandemonium") {
+    return (
+      <MotionCaseStudy
+        project={project}
+        nextProject={nextProject}
+        currentPosition={currentPosition}
+        projectCount={projects.length}
+      />
+    );
+  }
+
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#080808] text-[#f5f5f2]">
+      <SiteHeader active="work" />
+
+      <section className="px-5 pb-12 pt-36 sm:px-8 sm:pt-44 lg:px-12">
+        <div className="reveal-up grid grid-cols-[1fr_auto] items-end gap-5 border-b border-white/15 pb-5 sm:grid-cols-3">
+          <Link
+            href="/work"
+            className="text-[10px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+          >
+            ← All work
+          </Link>
+          <p className="hidden text-center text-[10px] uppercase tracking-[0.2em] text-white/30 sm:block">
+            {String(currentPosition).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+          </p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-white/35">
+            {project.category} / {project.year}
+          </p>
+        </div>
+
+        <div className="headline-reveal-delayed mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-3">
+          <h1 className="max-w-[14ch] break-words text-[clamp(3.4rem,9vw,9.5rem)] font-bold uppercase leading-[0.8] tracking-[-0.085em]">
+            {project.title}
+          </h1>
+          <p className="text-[10px] uppercase tracking-[0.24em] text-white/25 sm:text-xs">
+            / {project.codename}
+          </p>
+        </div>
+      </section>
+
+      <section className="px-5 pb-24 sm:px-8 lg:px-12">
+        <div
+          className="project-hero-panel relative aspect-[4/5] overflow-hidden sm:aspect-[16/9]"
+          style={{ backgroundColor: project.background, color: project.foreground }}
+        >
+          <span className="absolute left-5 top-5 text-[9px] uppercase tracking-[0.2em] opacity-55 sm:left-7 sm:top-7">
+            Lucifer / Case study
+          </span>
+          <span className="absolute right-5 top-5 text-[9px] uppercase tracking-[0.2em] opacity-55 sm:right-7 sm:top-7">
+            {project.discipline}
+          </span>
+          <span className="absolute inset-x-0 bottom-[-0.19em] text-center text-[83vw] font-bold leading-none tracking-[-0.14em] opacity-90 sm:text-[48vw]">
+            {project.mark}
+          </span>
+          <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between border-t border-current/25 pt-4 text-[9px] uppercase tracking-[0.18em] opacity-65 sm:bottom-7 sm:left-7 sm:right-7">
+            <span>{project.keywords.join(" / ")}</span>
+            <span>{project.year}</span>
+          </div>
+        </div>
+      </section>
+
+      <RevealOnScroll>
+        <section className="grid gap-12 border-t border-white/15 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-12 lg:px-12">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-white/40 lg:col-span-3">
+            Overview
+          </p>
+          <div className="lg:col-span-7 lg:col-start-5">
+            <p className="text-3xl leading-[1.12] tracking-[-0.05em] sm:text-4xl lg:text-5xl">
+              {project.introduction}
+            </p>
+            <p className="mt-10 max-w-2xl text-base leading-relaxed text-white/55 sm:text-lg">
+              {project.overview}
+            </p>
+          </div>
+        </section>
+      </RevealOnScroll>
+
+      <RevealOnScroll>
+        <section className="grid gap-10 border-t border-white/15 px-5 py-16 sm:grid-cols-3 sm:px-8 lg:px-12">
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Role</p>
+            <p className="mt-3 text-sm text-white/75">{project.role}</p>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Scope</p>
+            <ul className="mt-3 space-y-1 text-sm text-white/75">
+              {project.scope.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">Duration</p>
+            <p className="mt-3 text-sm text-white/75">{project.duration}</p>
+          </div>
+        </section>
+      </RevealOnScroll>
+
+      <SiteFooter />
+    </main>
+  );
+}
