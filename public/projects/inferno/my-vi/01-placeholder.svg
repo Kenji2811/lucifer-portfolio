@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+  <rect width="1200" height="100%" fill="#d7ccb7"/>
+  <rect x="48" y="48" width="1104" height="1404" fill="none" stroke="#39352d" stroke-opacity=".26"/>
+  <text x="72" y="112" fill="#39352d" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="6">SELECTED CAMPAIGN VISUAL</text>
+  <text x="72" y="1195" fill="#39352d" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="700" letter-spacing="-5">Mỹ Vị</text>
+  <text x="72" y="1260" fill="#39352d" fill-opacity=".64" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="3">Vietnamese dining / Food storytelling</text>
+  <text x="1080" y="1410" text-anchor="end" fill="#39352d" fill-opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24">01</text>
+</svg>
