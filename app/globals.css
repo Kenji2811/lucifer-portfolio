@@ -37,6 +37,14 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+.inferno-carousel {
+  scrollbar-width: none;
+}
+
+.inferno-carousel::-webkit-scrollbar {
+  display: none;
+}
+
 :focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 5px;

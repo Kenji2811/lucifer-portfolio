@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import MotionLoop from "@/components/MotionLoop";
+import InfernoCarousel from "@/components/InfernoCarousel";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -19,78 +19,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     <p className="text-[10px] uppercase tracking-[0.24em] text-white/38">
       {children}
     </p>
-  );
-}
-
-function StillFrame({
-  src,
-  alt,
-  index,
-  featured = false,
-}: {
-  src: string;
-  alt: string;
-  index: string;
-  featured?: boolean;
-}) {
-  return (
-    <figure className={featured ? "sm:col-span-2" : ""}>
-      <div
-        className={[
-          "group relative overflow-hidden border border-white/10 bg-[#0d0d0d]",
-          featured ? "aspect-[4/5] sm:aspect-[16/10]" : "aspect-[4/5]",
-        ].join(" ")}
-      >
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
-        />
-        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/[0.04]" />
-      </div>
-      <figcaption className="mt-3 flex items-center justify-between border-t border-white/10 pt-3 text-[9px] uppercase tracking-[0.18em] text-white/30">
-        <span>Selected visual</span>
-        <span>{index}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
-function VerticalMotion({
-  src,
-  poster,
-  label,
-}: {
-  src: string | null;
-  poster: string;
-  label: string;
-}) {
-  if (src) {
-    return (
-      <MotionLoop
-        src={src}
-        poster={poster}
-        label={label}
-        className="aspect-[9/16]"
-      />
-    );
-  }
-
-  return (
-    <div className="relative aspect-[9/16] overflow-hidden border border-white/10 bg-[#0d0d0d]">
-      <img
-        src={poster}
-        alt={`${label} placeholder`}
-        loading="lazy"
-        className="h-full w-full object-cover"
-      />
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 pb-4 pt-16">
-        <p className="text-[9px] uppercase tracking-[0.2em] text-white/65">
-          Vertical reel / 9:16
-        </p>
-      </div>
-    </div>
   );
 }
 
@@ -202,51 +130,9 @@ export default function InfernoCaseStudy({
             </div>
           </RevealOnScroll>
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-9">
-              <div className="grid gap-6 sm:grid-cols-2">
-                {brand.images.map((image, index) => (
-                  <RevealOnScroll
-                    key={image.src}
-                    className={index === 0 ? "sm:col-span-2" : ""}
-                    delay={(index % 3) * 45}
-                  >
-                    <StillFrame
-                      src={image.src}
-                      alt={image.alt}
-                      index={`${brand.number}.${String(index + 1).padStart(2, "0")}`}
-                      featured={index === 0}
-                    />
-                  </RevealOnScroll>
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-3">
-              <div className="lg:sticky lg:top-24">
-                <RevealOnScroll delay={90}>
-                  <VerticalMotion
-                    src={brand.motion.src}
-                    poster={brand.motion.poster}
-                    label={brand.motion.label}
-                  />
-                  <div className="mt-4 flex items-start justify-between gap-4 border-t border-white/10 pt-4">
-                    <div>
-                      <p className="text-sm tracking-[-0.02em] text-white/78">
-                        Selected motion
-                      </p>
-                      <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-white/30">
-                        Vertical / Social reel
-                      </p>
-                    </div>
-                    <span className="text-[9px] uppercase tracking-[0.18em] text-white/22">
-                      {brand.number}.06
-                    </span>
-                  </div>
-                </RevealOnScroll>
-              </div>
-            </div>
-          </div>
+          <RevealOnScroll delay={60}>
+            <InfernoCarousel brand={brand} />
+          </RevealOnScroll>
         </section>
       ))}
 
