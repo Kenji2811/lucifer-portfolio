@@ -17,6 +17,12 @@ const previewVideos: Partial<
     src: "/lucifer-portfolio/projects/talata/brand-motion.mp4",
     poster: "/lucifer-portfolio/projects/talata/brand-motion-poster.jpg",
   },
+
+  inferno: {
+  src: "/lucifer-portfolio/projects/inferno/inferno-reel.mp4",
+  poster: "/lucifer-portfolio/projects/inferno/inferno-reel-poster.webp",
+},
+
   pandemonium: {
     src: "/lucifer-portfolio/projects/motion/motion-reel.mp4",
     poster: "/lucifer-portfolio/projects/motion/motion-reel-poster.webp",
