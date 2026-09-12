@@ -59,29 +59,6 @@ function ProjectImage({
   );
 }
 
-function AssetPlaceholder({ index, title }: { index: string; title: string }) {
-  return (
-    <div className="flex aspect-[4/3] flex-col justify-between border border-dashed border-white/20 bg-white/[0.025] p-5 sm:p-6">
-      <div className="flex items-center justify-between text-[9px] uppercase tracking-[0.2em] text-white/35">
-        <span>{index}</span>
-        <span>Open slot</span>
-      </div>
-      <div className="relative mx-auto size-14 rounded-full border border-white/15">
-        <span className="absolute left-1/2 top-0 h-full w-px bg-white/15" />
-        <span className="absolute left-0 top-1/2 h-px w-full bg-white/15" />
-      </div>
-      <div>
-        <p className="text-xl tracking-[-0.04em] text-white/75 sm:text-2xl">
-          {title}
-        </p>
-        <p className="mt-2 text-[9px] uppercase tracking-[0.18em] text-white/30">
-          Add design later
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p className="text-[10px] uppercase tracking-[0.24em] text-white/38">
@@ -273,16 +250,37 @@ export default function MorningstarCaseStudy({
               </h2>
             </div>
             <p className="hidden max-w-xs text-right text-xs leading-relaxed text-white/35 sm:block">
-              These open slots reserve the rhythm of the case study until the
-              identity assets are ready.
+              Coastal colour, editorial typography and a flexible identity
+              system built for print and digital touchpoints.
             </p>
           </div>
         </RevealOnScroll>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          <RevealOnScroll><AssetPlaceholder index="03.1" title="Logo system" /></RevealOnScroll>
-          <RevealOnScroll delay={80}><AssetPlaceholder index="03.2" title="Type & colour" /></RevealOnScroll>
-          <RevealOnScroll delay={160}><AssetPlaceholder index="03.3" title="Brand guideline" /></RevealOnScroll>
+          <RevealOnScroll>
+            <ProjectImage
+              src="build-system/logo-system.webp"
+              alt="Talata logo system and brand applications"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </RevealOnScroll>
+          <RevealOnScroll delay={80}>
+            <ProjectImage
+              src="build-system/type-colour.webp"
+              alt="Talata typography and coastal colour system"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </RevealOnScroll>
+          <RevealOnScroll delay={160}>
+            <ProjectImage
+              src="build-system/brand-guideline.webp"
+              alt="Talata brand guideline across campaign, social and menu applications"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </RevealOnScroll>
         </div>
       </section>
 
