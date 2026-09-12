@@ -9,15 +9,15 @@ import SiteHeader from "@/components/SiteHeader";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Lucifer — a multidisciplinary graphic designer and 3D artist working across identity, campaigns, CGI and motion.",
+    "About Lucifer — a marketing communication and visual designer working across brand communication, campaigns, social content and motion.",
 };
 
 const focusAreas = [
-  "Brand identity",
-  "Campaign key visuals",
-  "3D / CGI",
-  "Motion & animation",
-  "Editorial systems",
+  "Brand communication",
+  "Campaign art direction",
+  "Social content",
+  "Graphic design",
+  "Motion & video",
 ] as const;
 
 export default function About() {
@@ -28,10 +28,10 @@ export default function About() {
       <section className="about-poster relative isolate min-h-[100svh] overflow-hidden text-[#151515]">
         <div className="reveal-up absolute left-5 top-28 z-20 sm:left-8 sm:top-32 lg:left-12">
           <p className="text-[9px] font-medium uppercase tracking-[0.24em] sm:text-[10px]">
-            Independent visual designer
+            Marketing communication designer
           </p>
           <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-black/45">
-            Vietnam / Working worldwide
+            Vietnam / F&amp;B and hospitality
           </p>
         </div>
 
@@ -65,10 +65,10 @@ export default function About() {
           <p className="mt-2 text-3xl font-bold uppercase leading-[0.82] tracking-[-0.055em] drop-shadow-sm sm:text-5xl lg:text-6xl">
             Visual
             <br />
-            Designer
+            Communicator
           </p>
           <p className="mt-3 font-serif text-sm italic tracking-[0.16em] text-white/85 sm:text-base">
-            Graphic · 3D · Motion
+            Strategy · Design · Motion
           </p>
         </div>
 
@@ -79,9 +79,9 @@ export default function About() {
             Detail obsessed
           </p>
           <p className="max-w-[13rem] text-right leading-relaxed">
-            Identity / CGI
+            Campaign / Content
             <br />
-            Editorial / Motion
+            Design / Motion
           </p>
         </div>
       </section>
@@ -92,8 +92,8 @@ export default function About() {
             Perspective / 01
           </p>
           <h2 className="max-w-[13ch] text-4xl font-medium leading-[0.98] tracking-[-0.06em] sm:text-6xl lg:col-span-8 lg:col-start-5 lg:text-7xl">
-            I turn ideas into visual worlds — precise in structure, alive in
-            atmosphere.
+            I turn communication goals into clear visual systems — built for
+            campaigns, content and motion.
           </h2>
         </section>
       </RevealOnScroll>
@@ -107,16 +107,17 @@ export default function About() {
 
         <RevealOnScroll className="lg:col-span-7 lg:col-start-5" delay={100}>
           <p className="max-w-3xl text-xl leading-relaxed tracking-[-0.025em] text-white/78 sm:text-2xl">
-            I&apos;m a multidisciplinary graphic designer and 3D artist. My work
-            moves across brand identity, campaign visuals, editorial layout,
-            CGI and motion — often for hospitality, food, events and culture.
+            I&apos;m a marketing communication and visual designer working across
+            F&amp;B and hospitality. My work connects campaign planning, key
+            visuals, social content, menu and print design, and short-form
+            motion.
           </p>
           <p className="mt-8 max-w-3xl text-base leading-relaxed text-white/48 sm:text-lg">
-            I care about hierarchy, typography, material, light and the moment
-            an image starts to feel alive. I combine 2D craft, 3D thinking and
-            AI-assisted workflows, while keeping every final decision human.
-            The goal is work that feels cinematic, intentional and
-            unmistakably clear.
+            Working closely with restaurant and event brands has taught me to
+            move between strategy and hands-on production. I build ideas into
+            practical communication systems, adapting each one across digital
+            content, on-ground materials and video while keeping the message
+            clear and the brand recognisable.
           </p>
 
           <dl className="mt-16 border-t border-white/15 text-[10px] uppercase tracking-[0.18em] sm:mt-24">
@@ -134,12 +135,12 @@ export default function About() {
             <div className="grid grid-cols-[6rem_1fr] gap-5 border-b border-white/15 py-5 sm:grid-cols-[9rem_1fr]">
               <dt className="text-white/30">Approach</dt>
               <dd className="text-white/68">
-                Concept first / Detail obsessed / Human controlled
+                Strategy first / System minded / Hands-on production
               </dd>
             </div>
             <div className="grid grid-cols-[6rem_1fr] gap-5 border-b border-white/15 py-5 sm:grid-cols-[9rem_1fr]">
               <dt className="text-white/30">Based</dt>
-              <dd className="text-white/68">Vietnam / Working worldwide</dd>
+              <dd className="text-white/68">Vietnam / Open to remote collaboration</dd>
             </div>
           </dl>
         </RevealOnScroll>
