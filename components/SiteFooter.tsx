@@ -13,8 +13,8 @@ export default function SiteFooter() {
     <footer className="border-t border-white/15 px-5 py-7 text-[9px] uppercase tracking-[0.18em] text-white/35 sm:px-8 lg:px-12">
       <div className="flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-white/70">Lucifer — Graphic designer / 3D artist</p>
-          <p className="mt-2">Vietnam / Working worldwide</p>
+          <p className="text-white/70">Lucifer — Marketing communication / Visual design</p>
+          <p className="mt-2">Vietnam / Open to remote collaboration</p>
         </div>
 
         <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-3">
