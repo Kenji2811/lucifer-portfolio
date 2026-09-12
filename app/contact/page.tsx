@@ -8,7 +8,7 @@ import SiteHeader from "@/components/SiteHeader";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a branding, art direction, 3D or spatial visual project with Lucifer.",
+    "Start a brand communication, campaign, social content or motion project with Lucifer.",
 };
 
 export default function ContactPage() {
@@ -26,16 +26,27 @@ export default function ContactPage() {
           </h1>
         </div>
 
-        <div className="reveal-up-delayed mt-20 grid gap-10 border-t border-white/15 pt-6 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr]">
+        <div className="reveal-up-delayed mt-20 grid gap-10 border-t border-white/15 pt-6 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">
               Email
             </p>
             <a
-              href="mailto:hello@lucifer.studio?subject=Project%20enquiry"
+              href="mailto:mhieu21092001@gmail.com?subject=Project%20enquiry"
               className="mt-3 inline-block text-lg tracking-[-0.03em] transition-opacity hover:opacity-55 sm:text-xl"
             >
-              hello@lucifer.studio
+              mhieu21092001@gmail.com
+            </a>
+          </div>
+          <div>
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/35">
+              Phone
+            </p>
+            <a
+              href="tel:+84329178896"
+              className="mt-3 inline-block text-lg tracking-[-0.03em] transition-opacity hover:opacity-55 sm:text-xl"
+            >
+              0329 178 896
             </a>
           </div>
           <div>
