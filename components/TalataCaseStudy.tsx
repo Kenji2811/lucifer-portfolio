@@ -259,7 +259,7 @@ export default function MorningstarCaseStudy({
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           <RevealOnScroll>
             <ProjectImage
-              src="build-system/logo-system.webp"
+              src="logo-system.webp"
               alt="Talata logo system and brand applications"
               className="aspect-[4/3]"
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -267,7 +267,7 @@ export default function MorningstarCaseStudy({
           </RevealOnScroll>
           <RevealOnScroll delay={80}>
             <ProjectImage
-              src="build-system/type-colour.webp"
+              src="type-colour.webp"
               alt="Talata typography and coastal colour system"
               className="aspect-[4/3]"
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -275,7 +275,7 @@ export default function MorningstarCaseStudy({
           </RevealOnScroll>
           <RevealOnScroll delay={160}>
             <ProjectImage
-              src="build-system/brand-guideline.webp"
+              src="brand-guideline.webp"
               alt="Talata brand guideline across campaign, social and menu applications"
               className="aspect-[4/3]"
               sizes="(max-width: 768px) 100vw, 33vw"
