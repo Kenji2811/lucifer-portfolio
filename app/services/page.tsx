@@ -8,37 +8,37 @@ import SiteHeader from "@/components/SiteHeader";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Brand identity, art direction, 3D and spatial visual services by Lucifer.",
+    "Brand communication, campaign art direction, social content and motion design services by Lucifer.",
 };
 
 const services = [
   {
     number: "01",
-    title: "Brand systems",
+    title: "Brand communication",
     description:
-      "Distinctive identities built to stay coherent across print, packaging and digital touchpoints.",
-    deliverables: "Strategy / Identity / Guidelines / Packaging",
+      "Communication systems that keep a brand recognisable across campaigns, social content, menus, print and digital touchpoints.",
+    deliverables: "Brand direction / Communication system / Guidelines / Applications",
   },
   {
     number: "02",
-    title: "Art direction",
+    title: "Campaign art direction",
     description:
-      "A clear visual world for campaigns, launches and cultural moments — from first concept to final frame.",
-    deliverables: "Concept / Campaign / Editorial / Motion direction",
+      "Campaign ideas translated into clear key visuals and adaptable formats — from the first concept to the final rollout.",
+    deliverables: "Concept / Key visual / Launch / Seasonal campaign",
   },
   {
     number: "03",
-    title: "3D & CGI",
+    title: "Social content & design",
     description:
-      "Atmospheric imagery and motion that give impossible materials, objects and spaces a believable presence.",
-    deliverables: "Look development / CGI / Animation / Post-production",
+      "Always-on content shaped around brand voice, audience behaviour and the rhythm of each social platform.",
+    deliverables: "Content planning / Social design / Copy direction / Format adaptation",
   },
   {
     number: "04",
-    title: "Spatial visuals",
+    title: "Motion design & film",
     description:
-      "Graphic systems translated into interiors, events and environments with scale, rhythm and intent.",
-    deliverables: "Spatial identity / Wayfinding / Visualization / Experience",
+      "Short-form motion and video editing that turn campaign ideas, products and brand stories into engaging moving images.",
+    deliverables: "Reels / Video editing / Motion graphics / Post-production",
   },
 ] as const;
 
@@ -53,8 +53,8 @@ export default function ServicesPage() {
             Practice / Capabilities
           </p>
           <p className="hidden max-w-xs text-right text-xs leading-relaxed text-white/45 md:block">
-            Independent creative practice for identities, campaigns and
-            image-led experiences.
+            Strategy, design and motion for F&amp;B, hospitality and
+            experience-led brands.
           </p>
         </div>
 
