@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lucifer — Graphic Designer & 3D Artist",
+    default: "Lucifer — Marketing Communication & Visual Designer",
     template: "%s — Lucifer",
   },
   description:
-    "Independent graphic designer and 3D artist focused on identity, campaigns and spatial visuals.",
+    "Marketing communication and visual design focused on brand communication, campaigns, social content and motion.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
