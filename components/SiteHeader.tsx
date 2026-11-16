@@ -3,6 +3,7 @@ import Link from "next/link";
 type SiteHeaderProps = {
   active: "home" | "work" | "services" | "about" | "contact";
   variant?: "on-dark" | "on-light";
+  fixed?: boolean;
 };
 
 const navItems = [
@@ -15,11 +16,22 @@ const navItems = [
 export default function SiteHeader({
   active,
   variant = "on-dark",
+  fixed = false,
 }: SiteHeaderProps) {
   const isOnLight = variant === "on-light";
 
   return (
-    <header className="site-header-reveal absolute inset-x-0 top-0 z-20 flex items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
+    <header
+      className={`site-header-reveal inset-x-0 top-0 flex items-center justify-between px-5 py-6 sm:px-8 lg:px-12 ${
+        fixed
+          ? `fixed z-50 border-b backdrop-blur-xl ${
+              isOnLight
+                ? "border-black/10 bg-white/90"
+                : "border-white/10 bg-black/90"
+            }`
+          : "absolute z-20"
+      }`}
+    >
       <Link
         href="/"
         aria-current={active === "home" ? "page" : undefined}

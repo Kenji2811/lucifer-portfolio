@@ -37,6 +37,85 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+.home-gallery {
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+.home-gallery-title {
+  margin-bottom: 1.75rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+
+.home-gallery-title a {
+  transition: color 180ms ease;
+}
+
+.home-gallery-title a:hover {
+  color: rgb(255 255 255 / 0.65);
+}
+
+.home-gallery-label {
+  margin-bottom: 1rem;
+  color: rgb(255 255 255 / 0.5);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.home-gallery-grid {
+  columns: 1;
+  column-gap: 1.25rem;
+}
+
+.home-gallery-item {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  vertical-align: top;
+  break-inside: avoid;
+}
+
+.home-gallery-caption {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.home-gallery-section {
+  margin-top: clamp(3rem, 6vw, 6rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  scroll-margin-top: 7rem;
+}
+
+@media (min-width: 640px) {
+  .home-gallery-grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-gallery-grid {
+    columns: 3;
+    column-gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-gallery-image img {
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .home-gallery-image:hover img {
+    transform: scale(1.015);
+  }
+}
+
 .inferno-carousel {
   scrollbar-width: none;
 }
