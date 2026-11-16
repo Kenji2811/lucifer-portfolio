@@ -81,7 +81,8 @@ button {
 .home-hero h1 {
   width: fit-content;
   margin: 0;
-  font-size: clamp(6rem, 14.6vw, 16.5rem);
+  padding-inline-end: 0.12em;
+  font-size: clamp(5.25rem, 12.8vw, 14.5rem);
   font-weight: 700;
   line-height: 0.82;
   letter-spacing: -0.085em;
