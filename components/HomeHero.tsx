@@ -4,7 +4,7 @@ import HomeArrow from "@/components/HomeArrow";
 
 export default function HomeHero() {
   return (
-    <section className="home-hero" aria-labelledby="home-title">
+    <section className="home-hero about-poster" aria-labelledby="home-title">
       <div className="home-hero-inner">
         <div className="home-hero-topline reveal-up">
           <p>Marketing communication / Visual design</p>
