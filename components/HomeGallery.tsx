@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HomeArrow from "@/components/HomeArrow";
+import AutoplayVideo from "@/components/AutoplayVideo";
 
 import {
   campaignCollections,
@@ -125,18 +126,7 @@ export default function HomeGallery() {
               key={video.src}
               className={`home-gallery-item ${index === 0 ? "home-gallery-item--wide" : ""}`}
             >
-              <video
-                controls
-                playsInline
-                preload="none"
-                poster={video.poster}
-                aria-label={video.title}
-                style={{ aspectRatio: `${video.width} / ${video.height}` }}
-                className="block h-auto w-full bg-white/[0.04]"
-              >
-                <source src={video.src} type="video/mp4" />
-                Your browser does not support video playback.
-              </video>
+              <AutoplayVideo {...video} />
               <figcaption className="home-gallery-caption">
                 <span>{video.title}</span>
                 <span className="home-gallery-caption-index" aria-hidden="true">
