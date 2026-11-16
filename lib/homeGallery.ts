@@ -20,12 +20,12 @@ const talataRoot = "/lucifer-portfolio/projects/talata";
 const motionRoot = "/lucifer-portfolio/projects/motion";
 
 const talataWork = [
-  ["coastal-campaign", "Coastal campaign", 1066, 1600],
   ["brand-guideline", "Brand guidelines", 1448, 1086],
   ["logo-system", "Logo system", 1448, 1086],
   ["type-colour", "Type & colour", 1448, 1086],
   ["abalone-composite", "Abalone collection", 1800, 1800],
   ["dinner-composite-v2", "Dinner collection", 1800, 1800],
+  ["coastal-campaign", "Coastal campaign", 1066, 1600],
   ["travel-season", "Travel season", 1200, 1500],
   ["mid-autumn", "Mid-Autumn", 1133, 1700],
   ["new-year", "New Year", 1133, 1700],

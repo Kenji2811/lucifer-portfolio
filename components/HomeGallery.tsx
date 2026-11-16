@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HomeArrow from "@/components/HomeArrow";
 
 import {
   campaignCollections,
@@ -12,16 +13,21 @@ import {
 function ImageGrid({
   images,
   href,
-  eager = false,
+  featureFirst = false,
+  layout = "",
 }: {
   images: GalleryImage[];
   href: string;
-  eager?: boolean;
+  featureFirst?: boolean;
+  layout?: "" | "menu";
 }) {
   return (
-    <div className="home-gallery-grid">
+    <div className={`home-gallery-grid ${layout === "menu" ? "home-gallery-grid--menu" : ""}`}>
       {images.map((image, index) => (
-        <figure key={image.src} className="home-gallery-item">
+        <figure
+          key={image.src}
+          className={`home-gallery-item ${featureFirst && index === 0 ? "home-gallery-item--wide" : ""}`}
+        >
           <Link
             href={href}
             className="home-gallery-image block overflow-hidden bg-white/[0.04]"
@@ -32,13 +38,16 @@ function ImageGrid({
               alt={image.alt}
               width={image.width}
               height={image.height}
-              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-              loading={eager && index === 0 ? "eager" : "lazy"}
+              sizes={featureFirst && index === 0 ? "100vw" : "(max-width: 767px) 100vw, 50vw"}
+              loading="lazy"
               className="block h-auto w-full"
             />
           </Link>
           <figcaption className="home-gallery-caption">
-            {image.title}
+            <span>{image.title}</span>
+            <span className="home-gallery-caption-index" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
           </figcaption>
         </figure>
       ))}
@@ -48,27 +57,44 @@ function ImageGrid({
 
 export default function HomeGallery() {
   return (
-    <div className="home-gallery px-5 pb-12 pt-28 sm:px-8 sm:pt-32 lg:px-12">
-      <section id="brand-communication" aria-labelledby="home-brand-title">
-        <h2 id="home-brand-title" className="home-gallery-title">
-          <Link href="/work/morningstar">Brand communication</Link>
-        </h2>
-        <h3 className="home-gallery-label">Talata Seafood</h3>
-        <ImageGrid images={talataImages} href="/work/morningstar" eager />
+    <div id="selected-work" className="home-gallery">
+      <div className="home-work-index home-eyebrow">
+        <p>Selected work / 2022—2026</p>
+        <nav aria-label="Portfolio chapters">
+          <a href="#brand-communication">01 Brand</a>
+          <a href="#campaign-art-direction">02 Campaign</a>
+          <a href="#motion-design-film">03 Motion</a>
+        </nav>
+      </div>
 
-        <h3 className="home-gallery-label mt-10 sm:mt-14">Menu design</h3>
-        <ImageGrid images={talataMenu} href="/work/morningstar" />
+      <section id="brand-communication" className="home-chapter" aria-labelledby="home-brand-title">
+        <div className="home-chapter-heading">
+          <span className="home-chapter-number">01</span>
+          <h2 id="home-brand-title" className="home-gallery-title">
+            <Link href="/work/morningstar">Brand<br />communication.</Link>
+          </h2>
+          <span className="home-chapter-arrow"><HomeArrow direction="down-right" /></span>
+        </div>
+        <h3 className="home-gallery-label">Talata Seafood</h3>
+        <ImageGrid images={talataImages} href="/work/morningstar" featureFirst />
+
+        <h3 className="home-gallery-label home-collection-heading">Menu design</h3>
+        <ImageGrid images={talataMenu} href="/work/morningstar" layout="menu" />
       </section>
 
       <section
         id="campaign-art-direction"
         aria-labelledby="home-campaign-title"
-        className="home-gallery-section"
+        className="home-chapter home-gallery-section"
       >
-        <h2 id="home-campaign-title" className="home-gallery-title">
-          <Link href="/work/inferno">Campaign art direction</Link>
-        </h2>
-        <div className="space-y-10 sm:space-y-14">
+        <div className="home-chapter-heading">
+          <span className="home-chapter-number">02</span>
+          <h2 id="home-campaign-title" className="home-gallery-title">
+            <Link href="/work/inferno">Campaign<br />art direction.</Link>
+          </h2>
+          <span className="home-chapter-arrow"><HomeArrow direction="down-right" /></span>
+        </div>
+        <div className="home-campaign-collections">
           {campaignCollections.map((collection) => (
             <div key={collection.id}>
               <h3 className="home-gallery-label">{collection.title}</h3>
@@ -84,14 +110,21 @@ export default function HomeGallery() {
       <section
         id="motion-design-film"
         aria-labelledby="home-motion-title"
-        className="home-gallery-section"
+        className="home-chapter home-gallery-section"
       >
-        <h2 id="home-motion-title" className="home-gallery-title">
-          <Link href="/work/pandemonium">Motion design &amp; film</Link>
-        </h2>
+        <div className="home-chapter-heading">
+          <span className="home-chapter-number">03</span>
+          <h2 id="home-motion-title" className="home-gallery-title">
+            <Link href="/work/pandemonium">Motion<br />&amp; film.</Link>
+          </h2>
+          <span className="home-chapter-arrow"><HomeArrow direction="down-right" /></span>
+        </div>
         <div className="home-gallery-grid">
-          {motionVideos.map((video) => (
-            <figure key={video.src} className="home-gallery-item">
+          {motionVideos.map((video, index) => (
+            <figure
+              key={video.src}
+              className={`home-gallery-item ${index === 0 ? "home-gallery-item--wide" : ""}`}
+            >
               <video
                 controls
                 playsInline
@@ -105,7 +138,10 @@ export default function HomeGallery() {
                 Your browser does not support video playback.
               </video>
               <figcaption className="home-gallery-caption">
-                {video.title}
+                <span>{video.title}</span>
+                <span className="home-gallery-caption-index" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </figcaption>
             </figure>
           ))}
