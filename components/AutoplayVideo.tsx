@@ -65,6 +65,7 @@ export default function AutoplayVideo({
       if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
       hovered = true;
       manuallyPaused = false;
+      if (!reducedMotion.matches && !document.hidden) video.currentTime = 0;
       syncPlayback();
     }
 
